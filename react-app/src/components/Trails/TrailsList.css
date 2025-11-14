@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  position: relative;
 }
 
 .trails-list-container h1 {
@@ -9,6 +10,70 @@
   margin-bottom: 2rem;
   color: #2c3e50;
   text-align: center;
+}
+
+/* Floating State Selector Box */
+.state-selector-box {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  z-index: 1000;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.state-selector-box h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-size: 1.125rem;
+  text-align: center;
+  border-bottom: 2px solid #86C232;
+  padding-bottom: 0.75rem;
+}
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.state-button {
+  background: linear-gradient(135deg, #86C232 0%, #61892F 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.state-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(134, 194, 50, 0.4);
+  background: linear-gradient(135deg, #61892F 0%, #86C232 100%);
+}
+
+.state-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .state-selector-box {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 }
 
 .trails-grid {

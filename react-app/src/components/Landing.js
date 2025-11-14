@@ -32,6 +32,10 @@ const Landing = () => {
     return (
 
         <div>
+            <video className="landing-video" autoPlay loop muted>
+                <source src="/assets/videos/find-trails.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
             <h1>You have landed on the landing page next to the landing pad where jets land near landing aircraft</h1>
         </div>
     );

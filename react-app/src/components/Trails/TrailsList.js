@@ -10,12 +10,24 @@ const TrailsList = () => {
   const trails = useSelector(state => state.trails.allTrails);
   const trailsArray = Object.values(trails);
 
+  const states = [
+    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+    'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+    'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+  ];
+
   useEffect(() => {
     dispatch(getAllTrails());
   }, [dispatch]);
 
   const handleTrailClick = (trailId) => {
     history.push(`/trails/${trailId}`);
+  };
+
+  const handleStateClick = (stateCode) => {
+    history.push(`/states/${stateCode}`);
   };
 
   if (!trailsArray.length) {
@@ -29,8 +41,25 @@ const TrailsList = () => {
   return (
     <div className="trails-list-container">
       <h1>Explore Trails</h1>
-      <div className="trails-grid">
-        {trailsArray.map(trail => (
+      
+      {/* Floating State Selector Box */}
+      <div className="state-selector-box">
+        <h3>Browse by State</h3>
+        <div className="state-grid">
+          {states.map(state => (
+            <button
+              key={state}
+              className="state-button"
+              onClick={() => handleStateClick(state)}
+              title={`View trails in ${state}`}
+            >
+              {state}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="trails-grid">{trailsArray.map(trail => (
           <div 
             key={trail.id} 
             className="trail-card"
