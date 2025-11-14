@@ -8,6 +8,11 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import TrailDetail from './components/Trails/TrailDetail';
+import TrailsList from './components/Trails/TrailsList';
+import MyTrails from './components/MyTrails/MyTrails';
+
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,8 +45,17 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/trails/:trailId' exact={true} >
+          <TrailDetail />
+        </ProtectedRoute>
+        <ProtectedRoute path='/trails' exact={true} >
+          <TrailsList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/my-trails' exact={true} >
+          <MyTrails />
+        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-         
+          <TrailsList />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

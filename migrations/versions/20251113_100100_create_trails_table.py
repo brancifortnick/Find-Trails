@@ -24,6 +24,7 @@ def upgrade():
     sa.Column('description', sa.String(length=1000), nullable=True),
     sa.Column('length', sa.Numeric(), nullable=False),
     sa.Column('difficulty', sa.Integer(), nullable=False),
+    sa.Column('elevation_gain', sa.Integer(), nullable=True),
     sa.Column('state_id', sa.Integer(), nullable=False),
     sa.Column('cross_state', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['state_id'], ['states.id'], ),

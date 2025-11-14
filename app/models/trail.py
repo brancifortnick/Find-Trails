@@ -9,6 +9,8 @@ class Trail(db.Model):
     description = db.Column(db.String(1000))
     length = db.Column(db.Numeric, nullable=False)
     difficulty = db.Column(db.Integer, nullable=False)  # 1-10 scale
+    elevation_gain = db.Column(db.Integer)  # in feet
+    image_url = db.Column(db.String(500))  # path to trail image
     state_id = db.Column(db.Integer, db.ForeignKey('states.id'), nullable=False)
     cross_state = db.Column(db.Boolean, nullable=False, default=False)
 
@@ -24,6 +26,8 @@ class Trail(db.Model):
             'description': self.description,
             'length': float(self.length) if self.length else None,
             'difficulty': self.difficulty,
+            'elevation_gain': self.elevation_gain,
+            'image_url': self.image_url,
             'state_id': self.state_id,
             'cross_state': self.cross_state
         }
@@ -35,6 +39,8 @@ class Trail(db.Model):
             'description': self.description,
             'length': float(self.length) if self.length else None,
             'difficulty': self.difficulty,
+            'elevation_gain': self.elevation_gain,
+            'image_url': self.image_url,
             'state_id': self.state_id,
             'cross_state': self.cross_state,
             'state': self.state.to_dict() if self.state else None
@@ -47,6 +53,7 @@ class Trail(db.Model):
             'description': self.description,
             'length': float(self.length) if self.length else None,
             'difficulty': self.difficulty,
+            'elevation_gain': self.elevation_gain,
             'state_id': self.state_id,
             'cross_state': self.cross_state,
             'state': self.state.to_dict() if self.state else None,

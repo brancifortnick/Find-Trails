@@ -1,8 +1,9 @@
 from app.models import db, State
+from sqlalchemy import text
 
 
+# Adds all 50 US states
 def seed_states():
-    """Seed all 50 US states"""
     states_data = [
         {'state_code': 'AL', 'state_name': 'Alabama'},
         {'state_code': 'AK', 'state_name': 'Alaska'},
@@ -63,6 +64,11 @@ def seed_states():
     db.session.commit()
 
 
+# Uses a raw SQL query to TRUNCATE the states table.
+# SQLAlchemy doesn't have a built in function to do this
+# TRUNCATE Removes all the data from the table, and RESET IDENTITY
+# resets the auto incrementing primary key, CASCADE deletes any
+# dependent entities
 def undo_states():
-    db.session.execute('TRUNCATE states RESTART IDENTITY CASCADE;')
+    db.session.execute(text('TRUNCATE states RESTART IDENTITY CASCADE;'))
     db.session.commit()

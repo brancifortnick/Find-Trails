@@ -63,6 +63,9 @@ export const getVisitedTrails = () => async (dispatch) => {
   }
 };
 
+// Alias for consistency with naming convention
+export const getVisitedCollections = getVisitedTrails;
+
 // Get interested trails (want to visit)
 export const getInterestedTrails = () => async (dispatch) => {
   const response = await fetch('/api/collections/interested');
@@ -73,6 +76,10 @@ export const getInterestedTrails = () => async (dispatch) => {
     return data.collections;
   }
 };
+
+// Alias for consistency with naming convention
+export const getInterestedCollections = getInterestedTrails;
+
 
 // Get toggle status for a trail
 export const getToggleStatus = (trailId) => async (dispatch) => {
