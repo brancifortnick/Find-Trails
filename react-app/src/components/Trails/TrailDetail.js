@@ -86,6 +86,16 @@ const TrailDetail = () => {
         ← Back to Trails
       </button>
 
+      <img 
+        src={trail.image_url || `/assets/images/trail${trail.id}.jpg`}
+        alt={trail.name}
+        className="trail-detail-hero-image"
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = 'https://via.placeholder.com/1200x400/86C232/ffffff?text=Trail+Image';
+        }}
+      />
+
       <div className="trail-detail-header">
         <div className="trail-title-section">
           <h1>{trail.name}</h1>

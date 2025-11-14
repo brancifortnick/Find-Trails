@@ -109,60 +109,72 @@ function MyTrails() {
                   className="collection-card"
                   onClick={() => handleTrailClick(trail.id)}
                 >
-                  <div className="collection-card-header">
-                    <h3>{trail.trail_name}</h3>
-                    <div className="collection-badges">
-                      {collection.visited && (
-                        <span className="badge visited-badge">✓ Visited</span>
+                  <img 
+                    src={trail.image_url || `/assets/images/trail${trail.id}.jpg`}
+                    alt={trail.trail_name}
+                    className="collection-card-image"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://via.placeholder.com/800x600/86C232/ffffff?text=Trail+Image';
+                    }}
+                  />
+                  
+                  <div className="collection-card-content">
+                    <div className="collection-card-header">
+                      <h3>{trail.trail_name}</h3>
+                      <div className="collection-badges">
+                        {collection.visited && (
+                          <span className="badge visited-badge">✓ Visited</span>
+                        )}
+                        {collection.want_to_visit && (
+                          <span className="badge interested-badge">★ Want to Visit</span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="collection-card-body">
+                      <div className="trail-info-row">
+                        <div className="info-item">
+                          <span className="info-label">State</span>
+                          <span className="info-value">{trail.state?.name || 'N/A'}</span>
+                        </div>
+                        <div className="info-item">
+                          <span className="info-label">Length</span>
+                          <span className="info-value">{trail.length} mi</span>
+                        </div>
+                      </div>
+
+                      <div className="trail-info-row">
+                        <div className="info-item">
+                          <span className="info-label">Difficulty</span>
+                          <span className="info-value">
+                            {trail.difficulty}/10
+                          </span>
+                        </div>
+                        <div className="info-item">
+                          <span className="info-label">Elevation Gain</span>
+                          <span className="info-value">{trail.elevation_gain} ft</span>
+                        </div>
+                      </div>
+
+                      {trail.cross_state && (
+                        <div className="cross-state-indicator">
+                          <span>🌄 Cross-State Trail</span>
+                        </div>
                       )}
-                      {collection.want_to_visit && (
-                        <span className="badge interested-badge">★ Want to Visit</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="collection-card-body">
-                    <div className="trail-info-row">
-                      <div className="info-item">
-                        <span className="info-label">State</span>
-                        <span className="info-value">{trail.state?.name || 'N/A'}</span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Length</span>
-                        <span className="info-value">{trail.length} mi</span>
-                      </div>
                     </div>
 
-                    <div className="trail-info-row">
-                      <div className="info-item">
-                        <span className="info-label">Difficulty</span>
-                        <span className="info-value">
-                          {trail.difficulty}/10
-                        </span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Elevation Gain</span>
-                        <span className="info-value">{trail.elevation_gain} ft</span>
-                      </div>
+                    <div className="collection-card-footer">
+                      <button 
+                        className="view-details-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTrailClick(trail.id);
+                        }}
+                      >
+                        View Details →
+                      </button>
                     </div>
-
-                    {trail.cross_state && (
-                      <div className="cross-state-indicator">
-                        <span>🌄 Cross-State Trail</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="collection-card-footer">
-                    <button 
-                      className="view-details-button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleTrailClick(trail.id);
-                      }}
-                    >
-                      View Details →
-                    </button>
                   </div>
                 </div>
               );

@@ -54,6 +54,7 @@ class Trail(db.Model):
             'length': float(self.length) if self.length else None,
             'difficulty': self.difficulty,
             'elevation_gain': self.elevation_gain,
+            'image_url': self.image_url,
             'state_id': self.state_id,
             'cross_state': self.cross_state,
             'state': self.state.to_dict() if self.state else None,

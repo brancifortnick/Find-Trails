@@ -36,30 +36,42 @@ const TrailsList = () => {
             className="trail-card"
             onClick={() => handleTrailClick(trail.id)}
           >
-            <div className="trail-card-header">
-              <h2 className="trail-name">{trail.name}</h2>
-              {trail.state && (
-                <span className="trail-state">{trail.state.state_code}</span>
-              )}
-            </div>
+            <img 
+              src={trail.image_url || `/assets/images/trail${trail.id}.jpg`}
+              alt={trail.name}
+              className="trail-card-image"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://via.placeholder.com/800x600/86C232/ffffff?text=Trail+Image';
+              }}
+            />
             
-            <p className="trail-description">
-              {trail.description?.substring(0, 150)}
-              {trail.description?.length > 150 ? '...' : ''}
-            </p>
-            
-            <div className="trail-info">
-              <div className="trail-stat">
-                <span className="stat-label">Length:</span>
-                <span className="stat-value">{trail.length} miles</span>
+            <div className="trail-card-content">
+              <div className="trail-card-header">
+                <h2 className="trail-name">{trail.name}</h2>
+                {trail.state && (
+                  <span className="trail-state">{trail.state.state_code}</span>
+                )}
               </div>
-              <div className="trail-stat">
-                <span className="stat-label">Difficulty:</span>
-                <span className="stat-value">{trail.difficulty}/10</span>
+              
+              <p className="trail-description">
+                {trail.description?.substring(0, 150)}
+                {trail.description?.length > 150 ? '...' : ''}
+              </p>
+              
+              <div className="trail-info">
+                <div className="trail-stat">
+                  <span className="stat-label">Length:</span>
+                  <span className="stat-value">{trail.length} miles</span>
+                </div>
+                <div className="trail-stat">
+                  <span className="stat-label">Difficulty:</span>
+                  <span className="stat-value">{trail.difficulty}/10</span>
+                </div>
+                {trail.cross_state && (
+                  <span className="cross-state-badge">Cross-State Trail</span>
+                )}
               </div>
-              {trail.cross_state && (
-                <span className="cross-state-badge">Cross-State Trail</span>
-              )}
             </div>
           </div>
         ))}

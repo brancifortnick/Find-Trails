@@ -11,6 +11,8 @@ import { authenticate } from './store/session';
 import TrailDetail from './components/Trails/TrailDetail';
 import TrailsList from './components/Trails/TrailsList';
 import MyTrails from './components/MyTrails/MyTrails';
+import TrailsByState from './components/TrailsByState/TrailsByState';
+import StateTrailsPage from './components/StateTrailsPage/StateTrailsPage';
 
 
 
@@ -54,6 +56,12 @@ function App() {
         <ProtectedRoute path='/my-trails' exact={true} >
           <MyTrails />
         </ProtectedRoute>
+        <Route path='/states/:stateCode' exact={true} >
+          <StateTrailsPage />
+        </Route>
+        <Route path='/states' exact={true} >
+          <TrailsByState />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <TrailsList />
         </ProtectedRoute>
