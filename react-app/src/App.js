@@ -13,6 +13,7 @@ import TrailsList from './components/Trails/TrailsList';
 import MyTrails from './components/MyTrails/MyTrails';
 import TrailsByState from './components/TrailsByState/TrailsByState';
 import StateTrailsPage from './components/StateTrailsPage/StateTrailsPage';
+import Landing from './components/Landing';
 
 
 
@@ -42,7 +43,8 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
+          < Landing />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -63,7 +65,7 @@ function App() {
           <TrailsByState />
         </Route>
         <ProtectedRoute path='/' exact={true} >
-          <TrailsList />
+          <Landing />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

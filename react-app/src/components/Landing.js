@@ -1,46 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-
-
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import './Landing.css';
 
 
 const Landing = () => {
-
     const user = useSelector((state) => state.session.user);
-    const dispatch = useDispatch();
-    const userId = user?.id;
+    const history = useHistory();
     
-    useEffect(async () => {
-        const data = await fetch(`/api/users/${userId}`);
-        const responseData = await data.json();
-        console.log("LANDING PAGE USEEFFECT");
-    if(responseData.errors){
-        console.log("ERRORS IN LANDING PAGE USEEFFECT");
-    } else
-    {
-        console.log("NO ERRORS IN LANDING PAGE USEEFFECT");
-    }
+    const handleExplore = () => {
+        history.push('/trails');
+    };
 
-        const userCollections = responseData.collections;
-        console.log("USER COLLECTIONS IN LANDING PAGE USEEFFECT", userCollections); 
-                
-
-    }, [dispatch]);
-    
+    const handleBrowseStates = () => {
+        history.push('/states');
+    };
     
     return (
-
-        <div>
-            <video className="landing-video" autoPlay loop muted>
-                <source src="/assets/videos/find-trails.mp4" type="video/mp4" />
+        <div className="landing-container">
+            <video className="landing-video" autoPlay loop muted playsInline>
+                <source src="/assets/images/find-trails.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <h1>You have landed on the landing page next to the landing pad where jets land near landing aircraft</h1>
+            
+            <div className="landing-overlay">
+                <div className="landing-content">
+                    <h1 className="landing-title">Discover Your Next Adventure</h1>
+                    <p className="landing-subtitle">
+                        Explore hiking trails across all 50 states
+                    </p>
+                    
+                    <div className="landing-buttons">
+                        <button className="btn-primary" onClick={handleExplore}>
+                            Explore All Trails
+                        </button>
+                        <button className="btn-secondary" onClick={handleBrowseStates}>
+                            Browse by State
+                        </button>
+                    </div>
+                    
+                    {user && (
+                        <div className="landing-welcome">
+                            <p>Welcome back, {user.username}!</p>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
-    
-
 }
 
 export default Landing;

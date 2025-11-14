@@ -18,7 +18,7 @@
   top: 100px;
   right: 20px;
   width: 280px;
-  background: white;
+  background: linear-gradient(135deg, #8B2635 0%, #B7410E 100%);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   padding: 1.5rem;
@@ -29,10 +29,10 @@
 
 .state-selector-box h3 {
   margin: 0 0 1rem 0;
-  color: #2c3e50;
+  color: #F5E6D3;
   font-size: 1.125rem;
   text-align: center;
-  border-bottom: 2px solid #86C232;
+  border-bottom: 2px solid #DAA520;
   padding-bottom: 0.75rem;
 }
 
@@ -43,8 +43,8 @@
 }
 
 .state-button {
-  background: linear-gradient(135deg, #86C232 0%, #61892F 100%);
-  color: white;
+  background: linear-gradient(135deg, #DAA520 0%, #D2691E 100%);
+  color: #654321;
   border: none;
   border-radius: 6px;
   padding: 0.5rem;
@@ -57,8 +57,9 @@
 
 .state-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(134, 194, 50, 0.4);
-  background: linear-gradient(135deg, #61892F 0%, #86C232 100%);
+  box-shadow: 0 4px 8px rgba(218, 165, 32, 0.4);
+  background: linear-gradient(135deg, #D2691E 0%, #DAA520 100%);
+  color: #F5E6D3;
 }
 
 .state-button:active {
@@ -126,13 +127,14 @@
 }
 
 .trail-state {
-  background-color: #86C232;
-  color: white;
+  background: linear-gradient(135deg, #D2691E 0%, #DAA520 100%);
+  color: #F5E6D3;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.875rem;
   font-weight: bold;
   margin-left: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .trail-description {
@@ -170,11 +172,12 @@
 }
 
 .cross-state-badge {
-  background-color: #61892F;
-  color: white;
+  background: linear-gradient(135deg, #8B2635 0%, #B7410E 100%);
+  color: #F5E6D3;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.75rem;
   font-weight: bold;
   margin-left: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
