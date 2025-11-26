@@ -1,22 +1,31 @@
-# Start with the python:3.9 image
+FROM node:18.20.0 AS build-stage
+WORKDIR /react-app
+COPY react-app/package*.json ./
 
-# Set the following enviroment variables
-#
-# REACT_APP_BASE_URL -> Your deployment URL
-# FLASK_APP -> entry point to your flask app
-# FLASK_ENV -> Tell flask to use the production server
-# SQLALCHEMY_ECHO -> Just set it to true
+ENV REACT_APP_BASE_URL=https://trailsoftears-88ffdf9f4a82.herokuapp.com/
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
-# Set the directory for upcoming commands to /var/www
+COPY react-app/. .
 
-# Copy all the files from your repo to the working directory
+RUN npm install
+RUN npm run build
 
-# Copy the built react app (it's built for us) from the  
-# /react-app/build/ directory into your flasks app/static directory
 
-# Run the next two python install commands with PIP
-# install -r requirements.txt
-# install psycopg2
+FROM python:3.9
 
-# Start the flask environment by setting our
-# closing command to gunicorn app:app
+
+ENV FLASK_APP=app
+ENV FLASK_ENV=devlopement
+ENV SQLALCHEMY_ECHO=True
+
+EXPOSE 8000
+
+WORKDIR /var/www
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir psycopg2-binary gunicorn
+
+COPY . .
+COPY --from=build-stage /react-app/build/* app/static/
+
+CMD gunicorn app:app

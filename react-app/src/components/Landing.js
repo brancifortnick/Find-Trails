@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import './Landing.css';
-
+import alias from '../../public/assets/images/find-trails.mp4';
 
 const Landing = () => {
     const user = useSelector((state) => state.session.user);
@@ -19,7 +19,7 @@ const Landing = () => {
     return (
         <div className="landing-container">
             <video className="landing-video" autoPlay loop muted playsInline>
-                <source src="/assets/images/find-trails.mp4" type="video/mp4" />
+                <source src={alias} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             
