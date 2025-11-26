@@ -1,8 +1,8 @@
-FROM node:18.20.0 AS build-stage
+FROM node:16.20.2 AS build-stage
 WORKDIR /react-app
 COPY react-app/package*.json ./
 
-ENV REACT_APP_BASE_URL=https://trailsoftears-88ffdf9f4a82.herokuapp.com/
+ENV REACT_APP_BASE_URL=http://localhost:5000
 ENV PUBLIC_URL=https://trailsoftears-88ffdf9f4a82.herokuapp.com/
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
