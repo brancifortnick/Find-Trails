@@ -3,6 +3,7 @@ WORKDIR /react-app
 COPY react-app/package*.json ./
 
 ENV REACT_APP_BASE_URL=https://trailsoftears-88ffdf9f4a82.herokuapp.com/
+ENV PUBLIC_URL=https://trailsoftears-88ffdf9f4a82.herokuapp.com/
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 COPY react-app/. .
