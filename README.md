@@ -1,5 +1,5 @@
 # [Find Trails](https://find-trails.com)
-*click the hyperlink above to take an inside look*
+*site no longer live*
 #
 **Good Trails Revamped**
 #
