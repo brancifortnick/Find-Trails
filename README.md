@@ -1,5 +1,4 @@
-# [Find Trails](https://find-trails.com](https://medley-9d4a5dd8e49e.herokuapp.com/))
-
+# [Good Trails](https://medley-9d4a5dd8e49e.herokuapp.com/)
 #
 **Good Trails Revamped**
 #
